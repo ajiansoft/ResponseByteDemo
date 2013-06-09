@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache>
+    <diskStore path="D:\\TEMP\\TalkEverybody\"/>
+    <defaultCache maxElementsInMemory="20000" eternal="false" overflowToDisk="true"
+    	timeToIdleSeconds="180" timeToLiveSeconds="600"/>
+    
+    <!-- 
+    cache元素的属性:
+	name: 设置缓存的名字,它的取值为类的全限定名或类的集合的名字 
+	maxInMemory: 设置基于内存的缓存中可存放的对象最大数目 
+	eternal: 设置对象是否为永久的,true表示永不过期,此时将忽略timeToIdleSeconds和timeToLiveSeconds属性;
+	timeToIdleSeconds： 设置对象空闲最长时间,超过这个时间,对象过期。当对象过期时,EHCache会把它从缓存中清除。
+	timeToLiveSeconds： 设置对象生存最长时间,超过这个时间,对象过期。
+	overflowToDisk： 设置基于内在的缓存中的对象数目达到上限后,是否把溢出的对象 
+	-->
+	<!-- 设置默认的查询缓存的数据过期策略 -->
+    <cache name="org.hibernate.cache.internal.StandardQueryCache" 
+       maxElementsInMemory="20000" eternal="false" overflowToDisk="true" 
+       timeToIdleSeconds="300" timeToLiveSeconds="600" />
+        
+    <!-- 设置时间戳缓存的数据过期策略 -->
+    <cache name="org.hibernate.cache.spi.UpdateTimestampsCache"
+    	maxElementsInMemory="20000" eternal="false"  timeToIdleSeconds="300" 
+       timeToLiveSeconds="600" overflowToDisk="true"/>
+       
+    <!-- 首页缓存对象缓存策略 -->
+    <cache name="TalkEverybody_HomePage_Cache_Newest" maxElementsInMemory="2000" 
+    	eternal="false"  timeToIdleSeconds="7200" 
+       timeToLiveSeconds="3600" overflowToDisk="true"/>
+    <cache name="TalkEverybody_HomePage_Cache_Hotest" maxElementsInMemory="2000" 
+    	eternal="false"  timeToIdleSeconds="7200" 
+       timeToLiveSeconds="3600" overflowToDisk="true"/>
+    
+</ehcache>
